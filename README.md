@@ -1,5 +1,3 @@
-:
-
 📊 Atliq Hardware SQL Project
 This project presents a data-driven solution to a series of real-world business questions for Atliq Hardware, a global consumer electronics company. Using SQL, key operational and strategic insights have been derived from multiple datasets including customer, product, sales, pricing, and manufacturing data.
 
@@ -53,4 +51,3 @@ Business-Oriented Data Interpretation
 
 📬 Contact
 📧 Email: harshgupta11x@gmail.com
-
