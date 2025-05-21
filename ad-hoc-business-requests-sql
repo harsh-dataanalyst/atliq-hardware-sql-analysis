@@ -1,3 +1,8 @@
+
+This document contains the business questions and their corresponding SQL queries used to analyze the Atliq Hardware dataset.
+
+---
+
 ## 📌  1.  Provide the list of markets in which customer  "Atliq  Exclusive"  operates its  business in the  APAC  region.
 
 SELECT DISTINCT
@@ -8,6 +13,7 @@ WHERE
     customer = 'Atliq Exclusive'
         AND region = 'APAC';
 
+---
 
 ## 📌 2.  What is the percentage of unique product increase in 2021 vs. 2020? The 
    final output contains these fields;
@@ -33,6 +39,7 @@ SELECT
 FROM count2020 c1
 CROSS JOIN count2021 c2;
 
+---
 
 ## 📌 3.  Provide a report with all the unique product counts for each  segment  and 
 sort them in descending order of product counts. The final output contains 2 fields; 
@@ -45,6 +52,7 @@ FROM dim_product p
 GROUP BY p.segment
 ORDER BY product_count DESC;
 
+---
 
 ## 📌 4.  Follow-up: Which segment had the most increase in unique products in 
 2021 vs 2020? The final output contains these fields, 
@@ -79,6 +87,7 @@ SELECT
 FROM count2020 c1
 LEFT JOIN count2021 c2 ON c1.segment = c2.segment
 
+---
 
 ## 📌 5.  Get the products that have the highest and lowest manufacturing costs. 
 The final output should contain these fields, 
@@ -96,6 +105,7 @@ FROM
     fact_manufacturing_cost m ON p.product_code = m.product_code
 GROUP BY product_code , product;
 
+---
 
 ## 📌 6.  Generate a report which contains the top 5 customers who received an 
 average high  pre_invoice_discount_pct  for the  fiscal  year 2021  and in the 
@@ -118,6 +128,8 @@ WHERE
 GROUP BY customer_code , customer
 ORDER BY average_discount_percentage DESC
 LIMIT 5
+
+---
 
 ## 📌 7.  Get the complete report of the Gross sales amount for the customer  “Atliq 
 Exclusive”  for each month  .  This analysis helps to  get an idea of low and 
@@ -142,6 +154,8 @@ SELECT *
 FROM cte1
 ORDER BY gross_sales_amount DESC;
 
+---
+
 ## 📌 8.  In which quarter of 2020, got the maximum total_sold_quantity? The final 
 output contains these fields sorted by the total_sold_quantity, 
 Quarter 
@@ -163,6 +177,8 @@ GROUP BY quarter
 ORDER BY total_sold_quantity DESC
 LIMIT 1;
 
+---
+
 ## 📌 9.  Which channel helped to bring more gross sales in the fiscal year 2021 
 and the percentage of contribution?  The final output  contains these fields, 
 channel 
@@ -180,6 +196,8 @@ GROUP BY channel)
 select * , round(gross_sales_mln*100/(select sum(gross_sales_mln) from cte ),2) as percentage 
 from 
 cte order by percentage desc ;
+
+---
 
 ## 📌 10.  Get the Top 3 products in each division that have a high 
 total_sold_quantity in the fiscal_year 2021? The final output contains these 
